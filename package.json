@@ -1,0 +1,26 @@
+{
+  "name": "react-online-hook",
+  "version": "1.0.0",
+  "description": "A simple React hook to listen for network status changes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uzwername/react-online-hook.git"
+  },
+  "keywords": [
+    "react hooks",
+    "network status",
+    "online",
+    "offline",
+    "react"
+  ],
+  "author": "Igor Bykov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Uzwername/react-online-hook/issues"
+  },
+  "homepage": "https://github.com/Uzwername/react-online-hook#readme"
+}
