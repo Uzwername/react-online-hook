@@ -2,8 +2,14 @@
   "name": "react-online-hook",
   "version": "1.0.0",
   "description": "A simple React hook to listen for network status changes",
-  "main": "index.js",
+  "browser": "lib/cjs/index.js",
+  "types": "lib/cjs/index.d.ts",
+  "module": "lib/ejs/index.ts",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
+    "build": "tsc && tsc -p tsconfig-ejs.json && babel lib/cjs/index.js -o lib/cjs/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,16 +17,33 @@
     "url": "git+https://github.com/Uzwername/react-online-hook.git"
   },
   "keywords": [
-    "react hooks",
-    "network status",
+    "react",
+    "hooks",
+    "network",
     "online",
     "offline",
     "react"
   ],
-  "author": "Igor Bykov",
+  "author": {
+    "name": "Igor Bykov",
+    "email": "igor.bykov@protonmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Uzwername/react-online-hook/issues"
   },
-  "homepage": "https://github.com/Uzwername/react-online-hook#readme"
+  "homepage": "https://github.com/Uzwername/react-online-hook#readme",
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.11.1",
+    "@types/node": "^14.0.27",
+    "@types/react": "^16.9.44",
+    "babel-plugin-add-module-exports": "1.0.2",
+    "jest": "^26.2.2",
+    "react": "^16.13.1",
+    "typescript": "3.9.7"
+  }
 }
