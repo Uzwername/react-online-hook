@@ -1,16 +1,16 @@
 {
   "name": "react-online-hook",
   "version": "1.0.0",
-  "description": "A simple React hook to listen for network status changes",
-  "browser": "lib/cjs/index.js",
+  "description": "React hook to monitor network status.",
+  "main": "lib/cjs/index.js",
+  "module": "lib/ejs/index.js",
   "types": "lib/cjs/index.d.ts",
-  "module": "lib/ejs/index.ts",
   "files": [
     "lib/"
   ],
   "scripts": {
-    "build": "tsc && tsc -p tsconfig-ejs.json && babel lib/cjs/index.js -o lib/cjs/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && tsc -p tsconfig-ejs.json && babel --config-file ./babel.cjs-module.config.json lib/cjs/index.js -o lib/cjs/index.js",
+    "test": "jest --env=jsdom --watch"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,7 @@
     "hooks",
     "network",
     "online",
-    "offline",
-    "react"
+    "offline"
   ],
   "author": {
     "name": "Igor Bykov",
@@ -38,12 +37,20 @@
   },
   "devDependencies": {
     "@babel/cli": "7.10.5",
-    "@babel/core": "7.11.1",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.44",
+    "babel-jest": "^26.3.0",
     "babel-plugin-add-module-exports": "1.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
     "jest": "^26.2.2",
+    "jest-environment-enzyme": "^7.1.2",
+    "jest-enzyme": "^7.1.2",
     "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "typescript": "3.9.7"
   }
 }
