@@ -10,7 +10,9 @@
   ],
   "scripts": {
     "build": "tsc && tsc -p tsconfig-ejs.json && babel --config-file ./babel.cjs-module.config.json lib/cjs/index.js -o lib/cjs/index.js",
-    "test": "jest --env=jsdom --watch"
+    "test": "jest --no-cache --env=jsdom --watchAll",
+    "npm:link": "npm link && npm link react-online-hook",
+    "npm:unlink": "npm unlink react-online-hook"
   },
   "repository": {
     "type": "git",
@@ -52,5 +54,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typescript": "3.9.7"
-  }
+  },
+  "dependencies": {}
 }

@@ -10,3 +10,5 @@ const BasicMockComponent = () => {
         </span>
     );
 };
+
+export default BasicMockComponent;
