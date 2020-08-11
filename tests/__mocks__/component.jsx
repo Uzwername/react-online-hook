@@ -5,7 +5,7 @@ const BasicMockComponent = () => {
     const { isOnline } = useOnlineStatus();
 
     return (
-        <span>
+        <span id="status">
             {isOnline ? 'Online' : 'Offline'}
         </span>
     );

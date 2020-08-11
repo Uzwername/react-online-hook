@@ -12,6 +12,11 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true
   },
+  "paths": {
+    "test-utils": [
+      "./utils/test-utils"
+    ]
+  },
   "include": [
     "src"
   ],
