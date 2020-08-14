@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 type useOnlineStatusReturn = {
     isOnline: boolean,
+    isAssumedStatus: boolean,
 };
 
 /**
@@ -12,24 +13,36 @@ type useOnlineStatusReturn = {
  * @see https://github.com/Uzwername/react-online-hook#readme
  */
 const useOnlineStatus = (): useOnlineStatusReturn => {
-    const [isOnline, setIsOnline] = useState<boolean>(window.navigator?.onLine);
+    // Check if required functionality is present
+    const isNavigatorOnLinePresent: boolean = (typeof window.navigator.onLine === 'boolean');
+
+    const [isAssumedStatus, setIsAssumedStatus] = useState<boolean>(!isNavigatorOnLinePresent);
+    // If no navigator.onLine, assume true
+    const [isOnline, setIsOnline] = useState<boolean>(isNavigatorOnLinePresent ? window.navigator.onLine : true);
 
     useEffect(() => {
-        const setOnline = () => setIsOnline(true);
+        const handOnline = () => {
+            setIsAssumedStatus(false);
+            setIsOnline(true);
+        };
 
-        window.addEventListener('online', setOnline);
-        return () => window.removeEventListener('online', setOnline);
+        window.addEventListener('online', handOnline);
+        return () => window.removeEventListener('online', handOnline);
     }, []);
 
     useEffect(() => {
-        const setOffline = () => setIsOnline(false);
+        const handleOffline = () => {
+            setIsAssumedStatus(false);
+            setIsOnline(false);
+        };
 
-        window.addEventListener('offline', setOffline);
-        return () => window.removeEventListener('offline', setOffline);
+        window.addEventListener('offline', handleOffline);
+        return () => window.removeEventListener('offline', handleOffline);
     }, []);
 
     return {
-        isOnline
+        isOnline,
+        isAssumedStatus
     }
 };
 

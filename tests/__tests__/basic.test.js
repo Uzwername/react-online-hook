@@ -1,14 +1,18 @@
 import React from 'react';
 import {
     render,
-    act,
     waitFor,
     cleanup
 } from '@testing-library/react'
-import StatusDisplay from '../__mocks__/Component.jsx'
+import { renderHook } from '@testing-library/react-hooks'
+import StatusDisplay from '../__mocks__/BasicComponent.jsx'
+import { fireWindowEvent } from '../utils';
 //
 import useOnlineStatus from "react-online-hook";
 
+/**
+ * This file is for testing base functionality
+ */
 describe('useOnlineStatus shape', () => {
     it('is a function', () => {
         expect(typeof useOnlineStatus).toBe('function');
@@ -17,45 +21,47 @@ describe('useOnlineStatus shape', () => {
     it('accepts no arguments', () => {
         expect(useOnlineStatus.length).toBe(0);
     });
+
+    it('returns an object with "isOnline" & "isAssumedStatus" boolean props', () => {
+        const { result } = renderHook(() => useOnlineStatus());
+
+        expect(typeof result.current).toBe('object');
+        expect(typeof result.current.isOnline).toBe('boolean');
+        expect(typeof result.current.isAssumedStatus).toBe('boolean');
+    });
 });
 
-describe('useOnlineStatus basic usage', () => {
-    it('correctly indicates online status', () => {
-        const wrapper = render(<StatusDisplay />);
+describe('useOnlineStatus basic functionality', () => {
+    it('correctly indicates online status', async () => {
+        const { getByText } = render(<StatusDisplay />);
 
         expect(window.navigator.onLine).toBe(true);
         expect(
-            wrapper.getByText('Online')
+            getByText('Online')
         ).toBeTruthy();
     });
 
     it('correctly updates network status when needed', async () => {
-        const wrapper = render(<StatusDisplay />);
+        const { getByText } = render(<StatusDisplay />);
 
         // Go offline
-        await act(() => new Promise((resolve) => {
-            window.dispatchEvent(new Event('offline'));
-            resolve();
-        }));
+        await fireWindowEvent('offline')
         await waitFor(() => {
             expect(
-                wrapper.getByText('Offline')
+                getByText('Offline')
             ).toBeTruthy();
         });
 
         // Back online
-        await act(() => new Promise((resolve) => {
-            window.dispatchEvent(new Event('online'));
-            resolve();
-        }));
+        await fireWindowEvent('online')
         await waitFor(() => {
             expect(
-                wrapper.getByText('Online')
+                getByText('Online')
             ).toBeTruthy();
         });
     });
 
-    it('performs a correct clean up', () => {
+    it('performs a correct clean up', async () => {
         // Mock listeners browser API
         const addEventListenerMock = jest.fn();
         window.addEventListener = addEventListenerMock;
@@ -64,8 +70,12 @@ describe('useOnlineStatus basic usage', () => {
 
         // Seems like we mock some of @testing-library/react
         // event listeners as well, but it doesn't matter here
-        // since this test is needed to assert jest mocks.
+        // since this test is needed to assert jest mocks exclusively.
         render(<StatusDisplay />);
+
+        // Simulate several network changes
+        await fireWindowEvent('offline');
+        await fireWindowEvent('online');
 
         // Filter out all arguments pairs that were
         // not added by the hook

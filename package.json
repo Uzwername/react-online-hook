@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc && tsc -p tsconfig-ejs.json && babel --config-file ./babel.cjs-module.config.json lib/cjs/index.js -o lib/cjs/index.js",
-    "test": "jest --env=jsdom --watchAll",
+    "test": "npm run build && jest --env=jsdom --watchAll",
     "npm:link": "npm link && npm link react-online-hook",
     "npm:unlink": "npm unlink react-online-hook"
   },
@@ -43,6 +43,7 @@
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@testing-library/react": "^10.4.8",
+    "@testing-library/react-hooks": "^3.4.1",
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.44",
     "babel-jest": "^26.3.0",
@@ -50,6 +51,7 @@
     "jest": "^26.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
     "typescript": "3.9.7"
   },
   "dependencies": {}
