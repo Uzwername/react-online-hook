@@ -62,7 +62,7 @@ You can play with [demo application](https://uzwername.github.io/react-online-ho
 
 [![how-to-play-demo.png](https://i.postimg.cc/4NgPCK2y/how-to-play-demo.png)](https://postimg.cc/PNSYYqjn)
 
-Please note that if you use any modern browser, `isAssumedStatus` will alway be true.
+Please note that if you use any modern browser, `isAssumedStatus` will alway be `false`.
 
 ## Callback on status change
 
