@@ -1,6 +1,6 @@
 {
   "name": "react-online-hook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hook to monitor network status.",
   "main": "lib/cjs/index.js",
   "module": "lib/ejs/index.js",
@@ -9,10 +9,11 @@
     "lib/"
   ],
   "scripts": {
+    "prepublishOnly": "npm run build && npm run test",
     "build": "tsc && tsc -p tsconfig-ejs.json && babel --config-file ./babel.cjs-module.config.json lib/cjs/index.js -o lib/cjs/index.js",
-    "test": "npm run build && jest --env=jsdom --watchAll",
-    "npm:link": "npm link && npm link react-online-hook",
-    "npm:unlink": "npm unlink react-online-hook"
+    "test": "npm run test:unit -- --coverage",
+    "test:unit": "npm run build && jest --env=jsdom",
+    "test:unit:watch": "npm run test:unit -- --watchAll"
   },
   "repository": {
     "type": "git",
