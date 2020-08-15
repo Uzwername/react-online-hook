@@ -1,6 +1,6 @@
 {
   "name": "react-online-hook",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React hook to monitor network status.",
   "main": "lib/cjs/index.js",
   "module": "lib/ejs/index.js",
