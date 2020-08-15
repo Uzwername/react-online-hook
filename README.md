@@ -55,6 +55,14 @@ const OnlineIndicator = () => {
 export default OnlineIndicator;
 ```
 
+## [Demo](https://uzwername.github.io/react-online-hook/)
+
+You can play with [demo application](https://uzwername.github.io/react-online-hook/) built to show how `useOnlineStatus` works [using network tab in developer tools](https://developers.google.com/web/ilt/pwa/tools-for-pwa-developers#simulate_offline_behavior).
+
+[![how-to-play-demo.png](https://i.postimg.cc/4NgPCK2y/how-to-play-demo.png)](https://postimg.cc/PNSYYqjn)
+
+Please note that if you use any modern browser, `isAssumedStatus` will alway be true.
+
 ## Callback on status change
 
 If you want to perform an action when online status changes, you can use [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) specifying `isOnline` in the dependency array like this:
