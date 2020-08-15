@@ -26,18 +26,17 @@ const useOnlineStatus = (): useOnlineStatusReturn => {
             setIsOnline(true);
         };
 
-        window.addEventListener('online', handOnline);
-        return () => window.removeEventListener('online', handOnline);
-    }, []);
-
-    useEffect(() => {
         const handleOffline = () => {
             setIsAssumedStatus(false);
             setIsOnline(false);
         };
 
+        window.addEventListener('online', handOnline);
         window.addEventListener('offline', handleOffline);
-        return () => window.removeEventListener('offline', handleOffline);
+        return () => {
+            window.removeEventListener('online', handOnline);
+            window.removeEventListener('offline', handleOffline);
+        };
     }, []);
 
     return {
