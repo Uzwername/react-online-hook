@@ -1,6 +1,10 @@
 # React online hook
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Uzwername/react-online-hook/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/react-online-hook)](https://www.npmjs.com/package/react-online-hook)
+[![npm bundle minified size](https://img.shields.io/bundlephobia/min/react-online-hook)](https://www.npmjs.com/package/react-online-hook)
+[![npm type definitions](https://img.shields.io/npm/types/react-online-hook)](https://www.npmjs.com/package/react-online-hook)
+[![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/Uzwername/react-online-hook)](https://www.npmjs.com/package/react-online-hook)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Uzwername/react-online-hook/blob/master/LICENSE)
 
 Lightweight, easy to use [React](https://reactjs.org/) hook to detect if user is online or offline with [TypeScript](https://www.typescriptlang.org/) / [Flow](https://flow.org/) support & progressive enhancement capabilities.
 
